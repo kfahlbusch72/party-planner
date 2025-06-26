@@ -10,7 +10,7 @@ let guests = [];
 
 async function getParties() {
   try {
-    const response = await fetch(`${API}/${events}`);
+    const response = await fetch(`${API}/${"events"}`);
     const result = await response.json();
     parties = result.data;
     render();
@@ -21,9 +21,31 @@ async function getParties() {
 
 async function getParty(id) {
   try {
-    const response = await fetch(`${API}/${events}/${id}`);
+    const response = await fetch(`${API}/${"events"}/${id}`);
     const result = await response.json();
     selectedParty = result.data;
+    render();
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function getRsvps() {
+  try {
+    const response = await fetch(`${API}/${"rsvps"}`);
+    const result = await response.json();
+    rsvps = result.data;
+    render();
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function getGuests() {
+  try {
+    const response = await fetch(`${API}/${"guests"}`);
+    const result = await response.json();
+    guests = result.data;
     render();
   } catch (error) {
     console.error(error);
