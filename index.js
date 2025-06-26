@@ -51,3 +51,17 @@ async function getGuests() {
     console.error(error);
   }
 }
+
+function PartyListItem(party) {
+  const $li = document.createElement("li");
+
+  if (party.id === selectedParty?.id) {
+    $li.classList.add("selected");
+  }
+
+  $li.innerHTML = `
+    <a href="#selected">${party.name}</a>
+    `;
+  $li.addEventListener("click", () => getParty(party.id));
+  return $li;
+}
