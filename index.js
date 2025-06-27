@@ -3,14 +3,17 @@ const COHORT = "/2506-Karl";
 const RESOURCE = "/events";
 const API = BASE + COHORT + RESOURCE;
 
+const RSVPS_API = `${BASE + COHORT}/rsvps`;
+const GUESTS_API = `${BASE + COHORT}/guests`;
+
 let parties = [];
 let selectedParty;
-let rsvp = [];
+let rsvps = [];
 let guests = [];
 
 async function getParties() {
   try {
-    const response = await fetch(`${API}/${"events"}`);
+    const response = await fetch(API);
     const result = await response.json();
     parties = result.data;
     render();
@@ -21,7 +24,7 @@ async function getParties() {
 
 async function getParty(id) {
   try {
-    const response = await fetch(`${API}/${"events"}/${id}`);
+    const response = await fetch(`${API}/${id}`);
     const result = await response.json();
     selectedParty = result.data;
     render();
@@ -32,7 +35,7 @@ async function getParty(id) {
 
 async function getRsvps() {
   try {
-    const response = await fetch(`${API}/${"rsvps"}`);
+    const response = await fetch(RSVPS_API);
     const result = await response.json();
     rsvps = result.data;
     render();
@@ -43,7 +46,7 @@ async function getRsvps() {
 
 async function getGuests() {
   try {
-    const response = await fetch(`${API}/${"guests"}`);
+    const response = await fetch(GUESTS_API);
     const result = await response.json();
     guests = result.data;
     render();
@@ -106,7 +109,7 @@ function GuestList() {
     )
   );
 
-  const $guests = guestsAtParty.map((guests) => {
+  const $guests = guestsAtParty.map((guest) => {
     const $guest = document.createElement("li");
     $guest.textContent = guest.name;
     return $guest;
