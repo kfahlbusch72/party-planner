@@ -75,3 +75,25 @@ function PartyList() {
 
   return $ul;
 }
+
+function SelectedParty() {
+  if (!selectedParty) {
+    const $p = document.createElement("p");
+    $p.textContent = "Please pick a party to get more information";
+    return $p;
+  }
+
+  const $party = document.createElement("section");
+  $party.innerHTML = `
+    <h3>${selectedParty.name} #${selectedParty.id}</h3>
+    <time datetime="${selectedParty.date}">
+        ${selectedParty.date.slice(0, 10)}
+</time>
+<address>${selectedParty.location}</address>
+<p>${selectedParty.description}</p>
+<GuestList></GuestList>
+`;
+  $party.querySelector("GuestList").replaceWith(GuestList());
+
+  return $party;
+}
