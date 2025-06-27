@@ -65,3 +65,13 @@ function PartyListItem(party) {
   $li.addEventListener("click", () => getParty(party.id));
   return $li;
 }
+
+function PartyList() {
+  const $ul = document.createElement("ul");
+  $ul.classList.add("parties");
+
+  const $parties = parties.map(PartyListItem);
+  $ul.replaceChildren(...$parties);
+
+  return $ul;
+}
