@@ -27,7 +27,7 @@ main {
 
 .parties a {
   display: block;
-  border: 1px solid #ccc;
+  border: 1px solid white;
   border-radius: 0.25rem;
   padding: 1ch;
   text-decoration: none;
@@ -35,7 +35,7 @@ main {
 }
 
 .parties a:hover {
-  background: #eee;
+  background: white;
   font-style: italic;
 }
 
