@@ -97,3 +97,24 @@ function SelectedParty() {
 
   return $party;
 }
+
+function GuestList() {
+  const $ul = document.createElement("ul");
+  const guestsAtParty = guests.filter((guest) =>
+    rsvps.find(
+      (rsvp) => rsvp.guestId === guest.id && rsvp.eventId === selectedParty.id
+    )
+  );
+
+  const $guests = guestsAtParty.map((guests) => {
+    const $guest = document.createElement("li");
+    $guest.textContent = guest.name;
+    return $guest;
+  });
+  $ul.replaceChildren(...$guests);
+
+  return $ul;
+}
+
+
+function
